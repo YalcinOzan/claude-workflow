@@ -13,6 +13,10 @@
 | 7. Kapı + birleştirme + build | Orkestratör | Ana dala birleşme, build |
 | 8. Gözden geçirme ve sürüm | Sahip | `owner/reviews.md` notları » sonraki turun girdisi |
 
+Adım 7'nin build'i sahibin gerçekten kullanabileceği haldedir: commit'lenmiş halden temiz bir kopyada alınır (yerel test
+araçları, sürücüler, commit'lenmemiş değişiklik girmez), duman testinden geçer (açılır, hata vermez). Projenin build
+betiği bu adımları tek komutta yapar. Sahip build'i gözden geçirirken orkestratör beklemez, sıradaki işe geçer.
+
 Küçük iş döngüyü kısaltır (soru gerektirmeyen düzeltme adım 2–4'ü atlar), ama adım 6–7 atlanmaz.
 Sahibe dönen her şey ya `owner/decisions.md`'de bir soru ya da `owner/reviews.md`'de gözden geçirilecek bir build'dir;
 acil girdi gerekiyorsa başına **SAHİP GİRDİSİ GEREKLİ** yazılır.

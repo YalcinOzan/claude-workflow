@@ -29,3 +29,6 @@ dosyalarını okuma, orkestratör ya da sahip rolünü üstlenme. Aşağıdaki k
 6. **Kapsam dışına kayma yok.** Ekip paketi dışında bir şey gerekirse durur ve `blocked` ile döner.
 7. **Doğrulamadan "bitti" yok.** Kapı yeşil değilse teslim yok; kırmızı sonucun teşhisi orkestratörde.
 8. **Kararın geçmişi arşivlenir, kararın kendisi kalır.** Kilometre taşı sonunda `work/cleanup.md` uygulanır.
+9. **Her kilometre taşı kullanılabilir bir build bırakır.** Commit'lenmiş halden, temiz kopyada alınır, duman testinden
+   geçer ve `owner/reviews.md`'ye yazılır. Sahip gözden geçirirken iş durmaz: orkestratör sıradaki işe geçer; karar
+   bekleyen konuda karar gerektirmeyen işle (ölçüm, altyapı, onaysız "Claude önerisi" ile ilerleyen aşama) sürer.

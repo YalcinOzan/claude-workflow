@@ -2,6 +2,10 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.1.3 — 2026-10-03
+- Çekirdek kural 9: her kilometre taşı sahibe kullanılabilir bir build bırakır (temiz kopya, duman testi); sahip
+  gözden geçirirken iş durmaz. Kaynak: Khan Borg'da test sürücüsünün yayın build'ine sızması (sahip build'i oynayamadı).
+
 ## 0.1.2 — 2026-10-03
 - Gözden geçirici modeli (varsayılan Sonnet/yüksek, belirli koşullarda Opus) sahip tarafından onaylandı.
 
