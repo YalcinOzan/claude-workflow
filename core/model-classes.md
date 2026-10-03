@@ -16,7 +16,7 @@ pakette farklısı seçilirse nedeni pakete yazılır.
 Gözden geçirici, işi yazandan düşük sınıfta olmamalı: Sonnet'in yazdığını Sonnet ya da Opus, orkestratörün kendi
 yazdığını (altyapı, tasarım) Opus gözden geçirir. `effort` desteklemeyen modelde alan yok sayılır.
 
-**Gözden geçirmede Opus'a çıkma koşulları** (Claude önerisi, ilk optimizasyon turunda ölçülecek):
+**Gözden geçirmede Opus'a çıkma koşulları** (sahip onayı 2026-10-03; ilk optimizasyon turunda ölçülecek):
 tasarım aşaması geçişi; mimari, veri biçimi ya da genel arayüz değişikliği; güvenlik yüzeyi (kimlik, gizli bilgi,
 dış girdi); kilometre taşı sonu gözden geçirmesi; Sonnet gözden geçiricinin "emin değilim" ya da çelişkili bulgu demesi.
 

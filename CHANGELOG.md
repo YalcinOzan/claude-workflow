@@ -2,6 +2,9 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.1.2 — 2026-10-03
+- Gözden geçirici modeli (varsayılan Sonnet/yüksek, belirli koşullarda Opus) sahip tarafından onaylandı.
+
 ## 0.1.1 — 2026-10-03
 Bağımsız gözden geçirme (reviewer, Sonnet) bulguları:
 - `reviewer` açıklaması geçersiz YAML'dı (değerdeki `: `), düzeltildi.
