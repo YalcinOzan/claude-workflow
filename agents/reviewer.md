@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: Bağımsız gözden geçirici. Bir dalı ya da diff'i iş paketine, projenin tasarım dokümanına, kurallarına (CLAUDE.md) ve testlere karşı denetler; dosya yazmaz, önem dereceli bulgu listesi döner. Orkestratör kendi işini değerlendirmez: her birleştirmeden önce kullan. Tasarım aşaması geçişi, mimari/veri biçimi değişikliği, güvenlik yüzeyi ya da kilometre taşı sonu gözden geçirmesinde model olarak opus ile çağır.
+description: Bağımsız gözden geçirici. Bir dalı ya da diff'i iş paketine, projenin tasarım dokümanına, kurallarına (CLAUDE.md) ve testlere karşı denetler; dosya yazmaz, önem dereceli bulgu listesi döner. Orkestratör kendi işini değerlendirmez; her birleştirmeden önce kullan. Tasarım aşaması geçişi, mimari/veri biçimi değişikliği, güvenlik yüzeyi ya da kilometre taşı sonu gözden geçirmesinde model olarak opus ile çağır.
 tools: Read, Glob, Grep, Bash
 model: sonnet
 effort: high

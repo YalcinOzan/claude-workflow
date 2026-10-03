@@ -11,7 +11,10 @@ pakette farklısı seçilirse nedeni pakete yazılır.
 | Web/kütüphane araştırması (`researcher`) | Sonnet | orta | — (taslağı orkestratör son haline getirir) |
 | Kilometre taşı sonu temizlik ve arşiv özeti (`cleanup`) | Haiku | orta | silinecek şeyin değeri belirsizse: sor |
 | Diff gözden geçirme (`reviewer`) | Sonnet | yüksek | aşağıdaki koşullardan biri: Opus |
-| Mimari, tasarım, oyun/ürün kararı önerisi, karar turu, birleştirme, son söz | Orkestratör (Opus) | yüksek | — |
+| Mimari, tasarım, ürün kararı önerisi, karar turu, birleştirme, son söz | Orkestratör (Opus) | yüksek | — |
+
+Gözden geçirici, işi yazandan düşük sınıfta olmamalı: Sonnet'in yazdığını Sonnet ya da Opus, orkestratörün kendi
+yazdığını (altyapı, tasarım) Opus gözden geçirir. `effort` desteklemeyen modelde alan yok sayılır.
 
 **Gözden geçirmede Opus'a çıkma koşulları** (Claude önerisi, ilk optimizasyon turunda ölçülecek):
 tasarım aşaması geçişi; mimari, veri biçimi ya da genel arayüz değişikliği; güvenlik yüzeyi (kimlik, gizli bilgi,

@@ -2,6 +2,7 @@
 
 - **Agent:** <implementer | scout | test-runner | researcher | cleanup | reviewer>  (model/çaba farklıysa nedeni)
 - **Başlangıç commit'i:** `<hash>` (dal `<ad>`); işe başlamadan `git log -1` ile doğrula, farklıysa bu commit'e geç.
+  Paket metni çağrı mesajında verilir; dosyası (`work/packages/`) yalnız orkestratörde durur.
 - **Hedef:** <ne elde edilecek, kim için; uygulama ayrıntısı değil sonuç>
 
 ## Bilgiler
@@ -22,5 +23,5 @@ Paketin dışında bir dosya, bir tasarım/arayüz kararı ya da cevaplanmamış
 Kapı iki denemede yeşile dönmezse dur ve çıktıyı aynen getir.
 
 ## Bitirme
-Commit'le (push etme), mesaj: `<önek>: <özet>` + projenin atıf satırları. Geri dönüşü `templates/handback.md`
-biçiminde, bu dosyanın sonuna ve son mesajına yaz.
+Commit'le (push etme), mesaj: `<önek>: <özet>` + projenin atıf satırları. Geri dönüşü
+`.claude/workflow/templates/handback.md` biçiminde yalnız son mesajına yaz; orkestratör onu bu dosyanın sonuna ekler.

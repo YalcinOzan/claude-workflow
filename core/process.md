@@ -25,18 +25,20 @@ acil girdi gerekiyorsa başına **SAHİP GİRDİSİ GEREKLİ** yazılır.
 - `resume.md` — yeni oturumun kaldığı yerden sürmesi için: şu anki konu, son durum, sıradaki adım, açık sorular,
   aktif dallar/worktree'ler. Kısa; her adımda üzerine yazılır.
 - `board.md` — kanban: Yapılacak / Sürüyor / Gözden geçirmede / Bitti (bu kilometre taşı).
-- `packages/` — iş paketleri (`templates/work-package.md`), dosya adı `NNN-kisa-ad.md`; geri dönüş aynı dosyanın sonuna.
+- `packages/` — iş paketleri (`.claude/workflow/templates/work-package.md`), dosya adı `NNN-kisa-ad.md`. Paket metni
+  agent çağrısında verilir; geri dönüşü orkestratör aynı dosyanın sonuna ekler.
 - `research/<konu>/` — araştırma notları.
 - `inbox/` — başka projeden devredilen iş; gelen her öğe bir araştırma + karar turu başlatır.
 - `cleanup.md` — kilometre taşı sonu kontrol listesi.
 - `archive/` — biten kilometre taşlarının özetleri (paketler ve araştırma buraya özetlenip silinir).
 - `timelog.md` — kilometre taşı başına gerçek süre, agent sayısı, yaklaşık token.
 
-Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (ör. Khan Borg'da `docs/GDD.md`, `docs/gdd/karar-kaydi.md`);
-`work/resume.md` bunlara bağlantı verir.
+Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (projenin CLAUDE.md'si yerlerini yazar); `work/resume.md`
+bunlara bağlantı verir.
 
 ## Paralel çalışma
-- En fazla 4 ekip üyesi aynı anda; her biri `isolation: worktree` ile.
+- En fazla 4 ekip üyesi aynı anda; her biri kendi worktree'sinde (`implementer` tanımında sabit; başka agent
+  dosya değiştirecekse çağrıda `isolation: worktree` verilir). İstisna: `cleanup` orkestratörün dalında çalışır.
 - Paket **başlangıç commit'ini** yazar; ekip işe başlamadan `git log -1` ile doğrular, farklıysa o commit'e geçer.
 - Paylaşılan dosyalar (ortak tablo, test dosyası) paketlerde sahiplenilir; ortak arayüz gerekiyorsa orkestratör onu
   paketlerden **önce** kurar ve commit'ler.
@@ -51,5 +53,6 @@ Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (ör. Khan Borg'da
 
 ## Şablona geri taşıma
 Bir projede yapılan süreç değişikliği genellenebiliyorsa orkestratör şablon reposuna öneri olarak yazar
-(`CHANGELOG.md`'ye taslak + değişiklik). Diğer projelerde bozmayacağı kontrol edilir; sahip onaylarsa sürüm artar,
+(`CHANGELOG.md`'ye taslak + değişiklik). İskelet dosyalarındaki (`owner/`, `work/`) değişiklikler güncellemeyle mevcut
+projelere taşınmaz; gerekiyorsa CHANGELOG kaydı elle geçiş adımını yazar. Diğer projelerde bozmayacağı kontrol edilir; sahip onaylarsa sürüm artar,
 projeler `install.sh --upgrade` ile güncellenir.
