@@ -13,13 +13,17 @@ Girdi: gözden geçirilecek dal/commit aralığı, ilgili iş paketi ve tasarım
 
 Yöntem:
 1. `git diff <taban>..<uç>` ile değişikliği oku; yalnız değişen satırlara değil, onları çağıran ve çağrılan koda da bak.
-2. Paketteki hedef ve değerlendirme ölçütüne karşı kontrol et: hedef karşılandı mı, kapsam dışına taşıldı mı?
-3. Projenin kurallarına (CLAUDE.md ve içe aktardıkları) karşı kontrol et.
+2. Paketteki ya da `work/board.md` satırındaki amaç ve bitti ölçütlerine karşı kontrol et: her ölçütü tek tek kanıtıyla (çıktı, ölçüm, dosya)
+   doğrula; kapsam dışına taşıldı mı? Tutmayan ölçüt kritik bulgudur.
+3. Projenin kurallarına (CLAUDE.md ve içe aktardıkları) karşı kontrol et. Proje bir referans kuralı tanımlıyorsa (kaynaktan uyarlama) ve
+   değişikliğin referans notu varsa: uygulama kaynaktaki algoritmayı mı uyarlıyor, icat mı ediyor? Kaynağı ve karşılığını yan yana yaz;
+   gerekçesiz sapma önemli bulgudur.
 4. Kapıyı kendin koştur (paketteki komut); sonucu aynen aktar.
 5. Doğrulayamadığın bir şüpheyi bulgu diye yazma; "doğrulanamadı" diye ayrı listele.
 
 Çıktı (son mesajın):
 - **Karar:** onay | değişiklik gerekli | opus'a yükselt (neden)
+- **Ölçütler:** her biri `tuttu | tutmadı | doğrulanamadı — kanıt`
 - **Bulgular:** her biri `[kritik|önemli|küçük] dosya:satır — sorun — önerilen düzeltme`
 - **Kapı:** komut ve özet çıktı
 - **Doğrulanamadı:** varsa

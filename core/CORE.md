@@ -32,3 +32,7 @@ dosyalarını okuma, orkestratör ya da sahip rolünü üstlenme. Aşağıdaki k
 9. **Her kilometre taşı kullanılabilir bir build bırakır.** Commit'lenmiş halden, temiz kopyada alınır, duman testinden
    geçer ve `owner/reviews.md`'ye yazılır. Sahip gözden geçirirken iş durmaz: orkestratör sıradaki işe geçer; karar
    bekleyen konuda karar gerektirmeyen işle (ölçüm, altyapı, onaysız "Claude önerisi" ile ilerleyen aşama) sürer.
+10. **Pano tek iş listesidir; "bitti" kanıtla.** `work/board.md`'de her iş başlamadan **bitti ölçütü** yazılır (kapı, ölçüm, test sorusu);
+   Sürüyor'da en fazla bir iş. Bitti'ye yalnız kanıtla (commit, kapı çıktısı, ölçüm) geçilir; ölçütü tutmayan iş Açık'ta kalır, "bitti" denmez.
+   İş sırasında çıkan yeni şey Sonra'ya yazılır, sahip onaylamadan ona geçilmez; sohbette gelen fikir aynı turda panoya satır olur.
+   `reviewer` kodla birlikte satırın ölçütlerini tek tek denetler. Büyük işin bitti ölçütünü sahip onaylar. `resume.md` yalnız Sürüyor'u gösterir.

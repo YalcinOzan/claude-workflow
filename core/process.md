@@ -9,7 +9,7 @@
 | 3. Karar turu | Sahip | `owner/decisions.md`'de cevaplar |
 | 4. Tasarım güncellemesi | Orkestratör | Projenin tasarım dokümanı + karar kaydı |
 | 5. Önce test, sonra kod | Ekip (iş paketiyle) | Worktree dalı, kapı yeşil |
-| 6. Tasarıma karşı gözden geçirme | `reviewer` | Bulgular; kritik bulgu adım 5'e döner |
+| 6. Tasarıma ve pano ölçütüne karşı gözden geçirme | `reviewer` | Bulgular + ölçüt tablosu; kritik bulgu ya da tutmayan ölçüt adım 5'e döner |
 | 7. Kapı + birleştirme + build | Orkestratör | Ana dala birleşme, build |
 | 8. Gözden geçirme ve sürüm | Sahip | `owner/reviews.md` notları » sonraki turun girdisi |
 
@@ -26,16 +26,19 @@ acil girdi gerekiyorsa başına **SAHİP GİRDİSİ GEREKLİ** yazılır.
 `owner/` (sahibin): `tasks.md`, `decisions.md`, `reviews.md`.
 
 `work/` (orkestratörün):
-- `resume.md` — yeni oturumun kaldığı yerden sürmesi için: şu anki konu, son durum, sıradaki adım, açık sorular,
-  aktif dallar/worktree'ler. Kısa; her adımda üzerine yazılır.
-- `board.md` — kanban: Yapılacak / Sürüyor / Gözden geçirmede / Bitti (bu kilometre taşı).
+Her bilginin tek yeri: pano = ne yapılıyor / ne bitti; karar kaydı = kesinleşen karar ve neden; `owner/decisions.md` = yalnız sahibin
+cevabını bekleyen; `owner/reviews.md` = sahibin build notları; `owner/tasks.md` = sahibin gelen kutusu.
+- `resume.md` — oturum girişi, ~10 satır: durum, panoya işaret, kalıcı kurallar. Her adımda üzerine yazılır.
+- `handout.md` — "nasıl" el kitabı: kapı ve build komutları, bağlar, tuzaklar, bilinen notlar, Sürüyor işin ayrıntılı planı.
+  Biten işlerin hikâyesi buraya yazılmaz (git + karar kaydı).
+- `board.md` — tek iş listesi (CORE kural 10): Sürüyor (en fazla 1) / Yapılacak / Açık (ölçütü tutmadı) / Sonra (yan yollar, sahip onayı
+  bekler) / Gözden geçirmede / Bitti (kanıtlı). Her satırda amaç ve önceden yazılmış bitti ölçütü; Bitti'de kanıt (commit, kapı, ölçüm).
 - `packages/` — iş paketleri (`.claude/workflow/templates/work-package.md`), dosya adı `NNN-kisa-ad.md`. Paket metni
   agent çağrısında verilir; geri dönüşü orkestratör aynı dosyanın sonuna ekler.
 - `research/<konu>/` — araştırma notları.
 - `inbox/` — başka projeden devredilen iş; gelen her öğe bir araştırma + karar turu başlatır.
 - `cleanup.md` — kilometre taşı sonu kontrol listesi.
 - `archive/` — biten kilometre taşlarının özetleri (paketler ve araştırma buraya özetlenip silinir).
-- `timelog.md` — kilometre taşı başına gerçek süre, agent sayısı, yaklaşık token.
 
 Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (projenin CLAUDE.md'si yerlerini yazar); `work/resume.md`
 bunlara bağlantı verir.
@@ -49,7 +52,8 @@ bunlara bağlantı verir.
 - Birleştirme sırası: bağımlılığı az olan önce; her birleştirmeden sonra kapı.
 
 ## Periyodik turlar
-- **Optimizasyon turu** (her 3–4 kilometre taşında): `work/timelog.md`, geri dönüşler ve sohbet üzerinden "neyi
+- **Kota kaydı:** taş sonunda kullanım ölçümü panonun Bitti satırına tek satır.
+- **Optimizasyon turu** (her 3–4 kilometre taşında): panodaki kota satırları, geri dönüşler ve sohbet üzerinden "neyi
   daha az token, zaman ya da G/Ç ile, kaliteyi düşürmeden yapabilirdik?" araştırması. Öneriler karar turuna gider;
   genellenebilen değişiklik şablona taşınır.
 - **Model karşılaştırma turu** (yeni model çıkınca): aynı birkaç iş paketi farklı model ve çaba seviyelerinde yaptırılır,

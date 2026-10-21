@@ -2,6 +2,17 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.2.0 — 2026-10-21
+Kaynak: Khan Borg süreç denetimi (pano bayatlamıştı, bilgi 9 yerdeydi, ölçütü tutmayan iş "bitti" sayılabiliyordu). Sahip onayı.
+- Çekirdek kural 10: pano tek iş listesi; bitti ölçütü önceden, Bitti yalnız kanıtla, tutmayan iş Açık'ta; yan yollar Sonra'ya, sahip onayı
+  olmadan geçilmez; sohbetteki fikir aynı turda panoya; `reviewer` ölçütleri tek tek denetler.
+- `process.md`: her bilginin tek yeri; `handout.md` "nasıl" el kitabı; kota kaydı panoda (`timelog.md` kalktı); döngü adımı 6 pano ölçütüne bağlı.
+- `reviewer`: ölçüt tablosu; projede referans kuralı varsa uyarlama denetimi.
+- İskelet: yeni `board.md` bölümleri, kısa `resume.md`, yeni `handout.md`, `cleanup.md` kota satırı; `timelog.md` kalktı.
+- Geçiş (0.1.x kurulu projeler): `install.sh --upgrade`; iskelet dosyaları güncellenmez: `work/board.md` bölümleri ve `work/handout.md` elle
+  eklenir, `work/timelog.md` arşive. Projede elle değiştirilmiş CORE/agent dosyaları `.bak-<zaman>` olarak yedeklenir: projeye özgü kurallar
+  önce projenin CLAUDE.md'sine taşınmalı.
+
 ## 0.1.3 — 2026-10-03
 - Çekirdek kural 9: her kilometre taşı sahibe kullanılabilir bir build bırakır (temiz kopya, duman testi); sahip
   gözden geçirirken iş durmaz. Kaynak: Khan Borg'da test sürücüsünün yayın build'ine sızması (sahip build'i oynayamadı).
