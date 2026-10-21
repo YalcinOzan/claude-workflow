@@ -1,6 +1,6 @@
 # claude-workflow
 
-Projeler arası Claude Code çalışma düzeni. Sahip (kullanıcı) kapsamı ve kararları verir; ana oturum orkestratördür;
+Projeler arası Claude Code çalışma düzeni. Ozan (kullanıcı) kapsamı ve kararları verir; ana oturum orkestratördür;
 işi, aynı kalitede yapabilecek en ucuz modele sabitlenmiş alt agent'lar yapar. Bütün durum repoda, dosyalarda durur.
 
 ## İçerik
@@ -9,7 +9,7 @@ işi, aynı kalitede yapabilecek en ucuz modele sabitlenmiş alt agent'lar yapar
 - `core/model-classes.md` — hangi iş hangi model ve çabada, yükseltme kuralları
 - `templates/` — iş paketi ve geri dönüş biçimi
 - `agents/` — reviewer, implementer, test-runner, scout, researcher, cleanup
-- `skeleton/` — projeye eklenen `owner/` (sahibin) ve `work/` (orkestratörün) dosyaları
+- `skeleton/` — projeye eklenen `owner/` (Ozan'ın) ve `work/` (orkestratörün) dosyaları
 
 ## Kurulum
 ```sh
@@ -22,4 +22,4 @@ projede değiştirilmiş bir agent dosyası güncellemede `.bak-<zaman>` olarak 
 
 ## Bu repoda çalışmak
 Değişiklik önerisi genellikle bir projeden gelir (`core/process.md`, "Şablona geri taşıma"). Her davranış değişikliği
-`VERSION` artışı ve `CHANGELOG.md` kaydıyla biter; sahip onaylamadan sürüm çıkmaz.
+`VERSION` artışı ve `CHANGELOG.md` kaydıyla biter; Ozan onaylamadan sürüm çıkmaz.

@@ -10,7 +10,7 @@ Konuyu araştır ve `work/research/<konu>/notes.md` dosyasına yaz:
 - **Özet** (5 satır)
 - **Bulgular**: her biri kaynak bağlantısıyla; birincil kaynağı ikincile tercih et
 - **Seçenekler**: her birinin artısı/eksisi, projenin mevcut durumuna uygunluğu
-- **Sahibe sorulacak sorular**: karar gerektiren noktalar
+- **Ozan'a sorulacak sorular**: karar gerektiren noktalar
 
 Erişemediğin bir kaynağı (giriş, bot koruması) aşmaya çalışma; "erişilemedi" diye yaz.
 Önerini seçeneklerden ayrı tut ve "Claude önerisi" diye işaretle.

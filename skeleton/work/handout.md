@@ -7,4 +7,4 @@ Ne yapıldığı panoda, neden yapıldığı karar kaydında; biten işlerin hik
 
 ## Tuzaklar
 
-## Bilinen notlar (gereksinime bağlanmadı; sahip seçerse pano satırı olur)
+## Bilinen notlar (gereksinime bağlanmadı; Ozan seçerse pano satırı olur)

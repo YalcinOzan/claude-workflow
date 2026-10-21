@@ -9,6 +9,9 @@ isolation: worktree
 
 Çağrı mesajındaki iş paketini uygularsın (paket dosyası orkestratörde durur; worktree'de aramana gerek yok).
 
+**Git güvenliği:** yalnız kendi worktree'inde git komutu çalıştır; ana çalışma dizininde (orkestratörün checkout'u) hiçbir git komutu
+çalıştırma ve dosya yazma. Geçici dosyalar çağrıda verilen geçici dizine (scratchpad), kök dizine değil.
+
 1. Paketi oku. Başlangıç commit'ini `git log -1` ile doğrula; farklıysa paketteki commit'e geç
    (kendi worktree dalında `git reset --hard <hash>`; başka dala dokunma) ve bunu geri dönüşte yaz.
 2. Yalnız "değiştirebileceğin dosyalar"a dokun. Paket aksini yazmadıkça önce testi yaz ve kırmızı gördüğünü kaydet.

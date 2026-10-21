@@ -2,6 +2,17 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.3.0 — 2026-10-21
+Kaynak: Khan Borg işletim şeması gözden geçirmesi (taş arası sunum panodan tetiklenmiyordu; iki repoya dokunan iş iki panoda çift satır
+olup birinde kanıtsız kaldı) ve KhanBorg'u şablona eşitleme. Ozan onayı.
+- Hitap: şablon kullanıcıya "sahip" demez, "Ozan" der (Ozan, 2026-10-15). `owner/` klasör adı ve dosya sahipliği anlamı değişmedi.
+- Çekirdek: **taş kuralı** (taş arası ve büyük tasarım değişikliğinde sunum + onay); kural 10'a panonun başında **Şu anki taş**; yeni kural 11
+  **iki repoya dokunan iş tek satır**; kural 1 kısa tutma.
+- KhanBorg'da olgunlaşan genel kurallar: gözden geçirmenin düzeltme turları Sonnet'te, bütçe kontrolü (haftalık %80), implementer/reviewer
+  git güvenliği, reviewer referans adımında kaynak `dosya::fonksiyon` + karar kaydında gerekçe, kota kaydı `get_usage`.
+- İskelet: `board.md` başında "Şu anki taş", `resume.md` taş satırı.
+- Geçiş: `install.sh --upgrade`; `work/board.md`'nin başına "## Şu anki taş" bölümü ve `resume.md`'ye taş satırı elle eklenir.
+
 ## 0.2.0 — 2026-10-21
 Kaynak: Khan Borg süreç denetimi (pano bayatlamıştı, bilgi 9 yerdeydi, ölçütü tutmayan iş "bitti" sayılabiliyordu). Sahip onayı.
 - Çekirdek kural 10: pano tek iş listesi; bitti ölçütü önceden, Bitti yalnız kanıtla, tutmayan iş Açık'ta; yan yollar Sonra'ya, sahip onayı
