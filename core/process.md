@@ -4,34 +4,34 @@
 
 | Adım | Kim | Çıktı |
 |---|---|---|
-| 1. Konu seçimi | Ozan | `owner/tasks.md`'ye satır |
+| 1. Konu seçimi | Kullanıcı | `owner/tasks.md`'ye satır |
 | 2. Araştırma + sorular | Orkestratör (geniş tarama ekibe) | `work/research/<konu>/`, sorular `owner/decisions.md`'ye |
-| 3. Karar turu | Ozan | `owner/decisions.md`'de cevaplar |
+| 3. Karar turu | Kullanıcı | `owner/decisions.md`'de cevaplar |
 | 4. Tasarım güncellemesi | Orkestratör | Projenin tasarım dokümanı + karar kaydı |
 | 5. Önce test, sonra kod | Ekip (iş paketiyle) | Worktree dalı, kapı yeşil |
 | 6. Tasarıma ve pano ölçütüne karşı gözden geçirme | `reviewer` | Bulgular + ölçüt tablosu; kritik bulgu ya da tutmayan ölçüt adım 5'e döner |
 | 7. Kapı + birleştirme + build | Orkestratör | Ana dala birleşme, build |
-| 8. Gözden geçirme ve sürüm | Ozan | `owner/reviews.md` notları » sonraki turun girdisi |
+| 8. Gözden geçirme ve sürüm | Kullanıcı | `owner/reviews.md` notları » sonraki turun girdisi |
 
-Adım 7'nin build'i Ozan'ın gerçekten kullanabileceği haldedir: commit'lenmiş halden temiz bir kopyada alınır (yerel test
+Adım 7'nin build'i kullanıcının gerçekten kullanabileceği haldedir: commit'lenmiş halden temiz bir kopyada alınır (yerel test
 araçları, sürücüler, commit'lenmemiş değişiklik girmez), duman testinden geçer (açılır, hata vermez). Projenin build
-betiği bu adımları tek komutta yapar. Ozan build'i gözden geçirirken orkestratör beklemez, sıradaki işe geçer.
+betiği bu adımları tek komutta yapar. Kullanıcı build'i gözden geçirirken orkestratör beklemez, sıradaki işe geçer.
 
 Küçük iş döngüyü kısaltır (soru gerektirmeyen düzeltme adım 2–4'ü atlar), ama adım 6–7 atlanmaz.
-Ozan'a dönen her şey ya `owner/decisions.md`'de bir soru ya da `owner/reviews.md`'de gözden geçirilecek bir build'dir;
-acil girdi gerekiyorsa başına **OZAN GİRDİSİ GEREKLİ** yazılır.
+Kullanıcıya dönen her şey ya `owner/decisions.md`'de bir soru ya da `owner/reviews.md`'de gözden geçirilecek bir build'dir;
+acil girdi gerekiyorsa başına **KULLANICI GİRDİSİ GEREKLİ** yazılır.
 
 ## Dosyalar
 
-`owner/` (Ozan'ın): `tasks.md`, `decisions.md`, `reviews.md`.
+`owner/` (kullanıcının): `tasks.md`, `decisions.md`, `reviews.md`.
 
 `work/` (orkestratörün):
-Her bilginin tek yeri: pano = ne yapılıyor / ne bitti; karar kaydı = kesinleşen karar ve neden; `owner/decisions.md` = yalnız Ozan'ın
-cevabını bekleyen; `owner/reviews.md` = Ozan'ın build notları; `owner/tasks.md` = Ozan'ın gelen kutusu.
+Her bilginin tek yeri: pano = ne yapılıyor / ne bitti; karar kaydı = kesinleşen karar ve neden; `owner/decisions.md` = yalnız kullanıcının
+cevabını bekleyen; `owner/reviews.md` = kullanıcının build notları; `owner/tasks.md` = kullanıcının gelen kutusu.
 - `resume.md` — oturum girişi, ~10 satır: durum, panoya işaret, kalıcı kurallar. Her adımda üzerine yazılır.
 - `handout.md` — "nasıl" el kitabı: kapı ve build komutları, bağlar, tuzaklar, bilinen notlar, Sürüyor işin ayrıntılı planı.
   Biten işlerin hikâyesi buraya yazılmaz (git + karar kaydı).
-- `board.md` — tek iş listesi (CORE kural 10): Şu anki taş (ad, satırlar, taşın bitti ölçütü) / Sürüyor (en fazla 1) / Yapılacak / Açık (ölçütü tutmadı) / Sonra (yan yollar, Ozan onayı
+- `board.md` — tek iş listesi (CORE kural 10): Şu anki taş (ad, satırlar, taşın bitti ölçütü) / Sürüyor (en fazla 1) / Yapılacak / Açık (ölçütü tutmadı) / Sonra (yan yollar, kullanıcı onayı
   bekler) / Gözden geçirmede / Bitti (kanıtlı). Her satırda amaç ve önceden yazılmış bitti ölçütü; Bitti'de kanıt (commit, kapı, ölçüm).
 - `packages/` — iş paketleri (`.claude/workflow/templates/work-package.md`), dosya adı `NNN-kisa-ad.md`. Paket metni
   agent çağrısında verilir; geri dönüşü orkestratör aynı dosyanın sonuna ekler.
@@ -71,5 +71,5 @@ girdide kırmızı verdiği görülür).
 ## Şablona geri taşıma
 Bir projede yapılan süreç değişikliği genellenebiliyorsa orkestratör şablon reposuna öneri olarak yazar
 (`CHANGELOG.md`'ye taslak + değişiklik). İskelet dosyalarındaki (`owner/`, `work/`) değişiklikler güncellemeyle mevcut
-projelere taşınmaz; gerekiyorsa CHANGELOG kaydı elle geçiş adımını yazar. Diğer projelerde bozmayacağı kontrol edilir; Ozan onaylarsa sürüm artar,
+projelere taşınmaz; gerekiyorsa CHANGELOG kaydı elle geçiş adımını yazar. Diğer projelerde bozmayacağı kontrol edilir; kullanıcı onaylarsa sürüm artar,
 projeler `install.sh --upgrade` ile güncellenir.

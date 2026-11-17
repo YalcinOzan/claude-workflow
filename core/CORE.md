@@ -4,10 +4,10 @@ Bu dosya her oturumda okunur; kısa tutulur. Ayrıntı `.claude/workflow/` altı
 `templates/`.
 
 **Alt agent'san:** yalnız çağrı mesajındaki pakete ve kendi agent tanımına uy; `work/resume.md` ve `owner/`
-dosyalarını okuma, orkestratör ya da Ozan rolünü üstlenme. Aşağıdaki kurallar ana oturum içindir.
+dosyalarını okuma, orkestratör ya da kullanıcı rolünü üstlenme. Aşağıdaki kurallar ana oturum içindir.
 
 ## Roller
-- **Ozan (kullanıcı):** kapsamı ve konuyu seçer, kararları verir, build'leri gözden geçirir. Tasarım ve kod yazmaz.
+- **Kullanıcı:** kapsamı ve konuyu seçer, kararları verir, build'leri gözden geçirir. Tasarım ve kod yazmaz.
   Dosyaları `owner/`: `tasks.md` (yeni görevler), `decisions.md` (karar bekleyenler), `reviews.md` (gözden geçirme notları).
 - **Orkestratör (ana oturum):** araştırır, tasarlar, planlar, iş paketi yazar, doğrular, birleştirir, kayıt tutar.
   Dosyaları `work/`. **Kendi işine not vermez:** teslim öncesi gözden geçirmeyi `reviewer` agent'ı yapar.
@@ -16,7 +16,7 @@ dosyalarını okuma, orkestratör ya da Ozan rolünü üstlenme. Aşağıdaki ku
 
 ## Kurallar
 **Taş kuralı (her şeyin üstünde):** Orkestratör **kilometre taşları arasında** (bir taş bitip sonrakine geçerken) ve **büyük tasarım
-değişikliklerinde** (kullanıcının gördüğü düzeni, akışı ya da bir mekaniği değiştiren yön seçimi) Ozan'a kısa bir sunum yapar (ne, neden,
+değişikliklerinde** (son kullanıcının gördüğü düzeni, akışı ya da bir mekaniği değiştiren yön seçimi) kullanıcıya kısa bir sunum yapar (ne, neden,
 seçenekler, öneri, mümkünse görüntü) ve **onay gelmeden başlatmaz**. Onaylı taşın içindeki uygulama adımları, düzeltmeler, gözden geçirme
 turları ve küçük ayrıntılar sorulmadan yürür (küçük tasarım ayrıntıları "Claude önerisi" diye işaretlenir, taş sonunda sunulur).
 Kural 9'daki "iş durmaz" bu onayın yerine geçmez. Taş panonun başında yazılıdır (kural 10).
@@ -25,9 +25,9 @@ Kural 9'daki "iş durmaz" bu onayın yerine geçmez. Taş panonun başında yaz�
    `work/archive/`'e); cevaplanmış kararlar ve yeni
    görevler işlenir, "devam" denince `resume.md`'den sürülür. Her iş adımı sonunda `work/resume.md` ve
    `work/board.md` güncellenir, **commit'lenir ve çalışma dalına push'lanır** (yeni oturum yalnız push'lananı görür).
-2. **Döngü:** konu » araştırma + sorular » karar turu (Ozan) » tasarım güncellemesi » önce test, sonra kod »
-   tasarıma karşı gözden geçirme » kapı (testler) + birleştirme + build » Ozan gözden geçirir.
-3. **Kararlar Ozan'ındır.** Seçenek ve öneri sunulur; onaysız uygulanan karar "Claude önerisi" diye işaretlenir.
+2. **Döngü:** konu » araştırma + sorular » karar turu (kullanıcı) » tasarım güncellemesi » önce test, sonra kod »
+   tasarıma karşı gözden geçirme » kapı (testler) + birleştirme + build » kullanıcı gözden geçirir.
+3. **Kararlar kullanıcınındır.** Seçenek ve öneri sunulur; onaysız uygulanan karar "Claude önerisi" diye işaretlenir.
    Karar bekleyen her şey `owner/decisions.md`'ye yazılır; sohbette kalan karar kaybolur.
 4. **Ucuz model önce.** İş, aynı kalitede yapabilecek en ucuz sınıfa verilir (`.claude/workflow/model-classes.md`). Paket
    `.claude/workflow/templates/work-package.md` ile çağrı mesajında verilir, geri dönüş `handback.md` biçimindedir.
@@ -37,12 +37,12 @@ Kural 9'daki "iş durmaz" bu onayın yerine geçmez. Taş panonun başında yaz�
 7. **Doğrulamadan "bitti" yok.** Kapı yeşil değilse teslim yok; kırmızı sonucun teşhisi orkestratörde.
 8. **Kararın geçmişi arşivlenir, kararın kendisi kalır.** Kilometre taşı sonunda `work/cleanup.md` uygulanır.
 9. **Her kilometre taşı kullanılabilir bir build bırakır.** Commit'lenmiş halden, temiz kopyada alınır, duman testinden
-   geçer ve `owner/reviews.md`'ye yazılır. Ozan gözden geçirirken iş durmaz: orkestratör sıradaki işe geçer; karar
+   geçer ve `owner/reviews.md`'ye yazılır. Kullanıcı gözden geçirirken iş durmaz: orkestratör sıradaki işe geçer; karar
    bekleyen konuda karar gerektirmeyen işle (ölçüm, altyapı, onaysız "Claude önerisi" ile ilerleyen aşama) sürer.
 10. **Pano tek iş listesidir; "bitti" kanıtla.** `work/board.md`'de her iş başlamadan **bitti ölçütü** yazılır (kapı, ölçüm, test sorusu);
    Sürüyor'da en fazla bir iş. Bitti'ye yalnız kanıtla (commit, kapı çıktısı, ölçüm) geçilir; ölçütü tutmayan iş Açık'ta kalır, "bitti" denmez.
-   İş sırasında çıkan yeni şey Sonra'ya yazılır, Ozan onaylamadan ona geçilmez; sohbette gelen fikir aynı turda panoya satır olur.
-   `reviewer` kodla birlikte satırın ölçütlerini tek tek denetler. Büyük işin bitti ölçütü taş başı sunumuna girer, Ozan onaylar.
+   İş sırasında çıkan yeni şey Sonra'ya yazılır, kullanıcı onaylamadan ona geçilmez; sohbette gelen fikir aynı turda panoya satır olur.
+   `reviewer` kodla birlikte satırın ölçütlerini tek tek denetler. Büyük işin bitti ölçütü taş başı sunumuna girer, kullanıcı onaylar.
    Panonun başında **Şu anki taş**: adı, içindeki satırlar, taşın bitti ölçütü; son satırı Bitti'ye geçince taş kuralı işler.
    `resume.md` yalnız taşı ve Sürüyor'u gösterir.
 11. **İki repoya dokunan iş tek satırdır.** Satır işin başladığı reponun panosunda durur; öbür repo panosunda yalnız "bkz. <repo> panosu"

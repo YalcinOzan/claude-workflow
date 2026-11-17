@@ -1,4 +1,4 @@
-# Gözden geçirmeler (Ozan)
+# Gözden geçirmeler (kullanıcı)
 
 Orkestratör gözden geçirilecek build'leri buraya ekler (bağlantı, ne değişti, neye bakmalı). Notlarını altına yaz;
 notlar bir sonraki turun girdisidir.

@@ -11,8 +11,8 @@ Tek iş listesi (CORE kural 10). Her satırda amaç ve önceden yazılmış bitt
 
 ## Açık (ölçütü tutmadı)
 
-## Sonra (yan yollar; Ozan onayı olmadan geçilmez)
+## Sonra (yan yollar; kullanıcı onayı olmadan geçilmez)
 
-## Gözden geçirmede (Ozan, `owner/reviews.md`)
+## Gözden geçirmede (kullanıcı, `owner/reviews.md`)
 
 ## Bitti (kanıtlı)

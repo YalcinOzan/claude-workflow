@@ -2,6 +2,16 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.3.2 — 2026-11-18
+Kaynak: şablon herkese açık; kuran herkese "Ozan" diyordu. Ozan onayı: "kullanıcı kelimesi olsun, ad sorulmasın" (2026-11-17), uygulama
+biçimi ve bu kaydın bitti ölçütü onaylı (2026-11-18). 0.3.0'daki "şablon 'Ozan' der" kaydının yerini alır.
+- Kurulan dosyalarda (`core/`, `agents/`, `skeleton/`) hitap "kullanıcı"; `install.sh` ad sormaz, değişmedi. Acil girdi işareti
+  **KULLANICI GİRDİSİ GEREKLİ**.
+- `model-classes.md`'deki tarihli onaylarda ad düştü; tarih ve alıntı kaldı.
+- `CORE.md` taş kuralında oyunun ya da ürünün kullanıcısı "son kullanıcı" oldu (hitapla karışmasın diye).
+- Geçiş: `install.sh --upgrade`. İskelet dosyaları güncellenmez: var olan projelerde `owner/` başlıklarındaki ad ve
+  `owner/decisions.md`'deki eski acil girdi işareti elle değiştirilebilir (isteğe bağlı; KhanBorg ve design-desk'te işareti okuyan betik yok).
+
 ## 0.3.1 — 2026-11-17
 Kaynak: Khan Borg hata kaydı ve 2026-11-15 süreç incelemesi. Metni yazılı dört ayrı kural çiğnendi: betik hatasını yakalama koşulu
 kuralda vardı, kapıda yoktu; git dışında kalması gereken dosyalar depoya girdi; `resume.md` kısa tutma kuralına rağmen şişti; iş tahtası
