@@ -2,6 +2,13 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.4.0 — 2026-11-18
+Kilometre taşı: şablon paylaşılabilir. 0.3.1–0.3.4'ü kapatır; bu sürümde yeni davranış değişikliği yok. Ozan onayı: "Evet, kapansın" (2026-11-18).
+- Kurulan dosyalarda kişisel ad yok, hitap "kullanıcı" (0.3.2); hata kaydı ve sabit desenli ihlal kapıya (0.3.1); olgu kanıtla, alt görev + Yapan,
+  iş tahtası `tools/` (0.3.3); aşama sınırında yeni oturum (0.3.4).
+- Sistemi anlatan kısa sayfa bu taşta yapılmadı (isteğe bağlıydı).
+- Geçiş: `install.sh --upgrade`; 0.3.x'ten gelen projede ek adım yok, önceki sürümlerin geçiş adımları geçerli.
+
 ## 0.3.4 — 2026-11-18
 Kaynak: 0.4.0'ın aşama sınırı / bağlam yönetimi maddesi. Bir taşın birkaç satırını tek oturumda süren oturum bağlam sınırına varıp
 sıkıştırıldı; taş başında yeni oturum kuralı yalnız projelerde yereldi. Matt Pocock'un aşama sınırı karar ağacıyla aynı yönde (devam /
