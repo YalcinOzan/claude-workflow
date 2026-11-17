@@ -33,6 +33,9 @@ cevabını bekleyen; `owner/reviews.md` = kullanıcının build notları; `owner
   Biten işlerin hikâyesi buraya yazılmaz (git + karar kaydı).
 - `board.md` — tek iş listesi (CORE kural 10): Şu anki taş (ad, satırlar, taşın bitti ölçütü) / Sürüyor (en fazla 1) / Yapılacak / Açık (ölçütü tutmadı) / Sonra (yan yollar, kullanıcı onayı
   bekler) / Gözden geçirmede / Bitti (kanıtlı). Her satırda amaç ve önceden yazılmış bitti ölçütü; Bitti'de kanıt (commit, kapı, ölçüm).
+  Üç ve daha çok adımlı satır pano satırı çoğaltmadan kendi altında `- Alt görevler:` ve `- [ ] metin · Yapan: <kim, model>` satırlarına
+  bölünür. Biten alt görevde Yapan zorunlu: ana oturumun modeli, alt agent adı ve modeli, başka araç kullanıldıysa aracı, modeli ve çabası;
+  commit mesajında aynı bilgi `Uygulayıcı:` satırıyla. İş tahtası alt görevi bu biçimden okur.
 - `packages/` — iş paketleri (`.claude/workflow/templates/work-package.md`), dosya adı `NNN-kisa-ad.md`. Paket metni
   agent çağrısında verilir; geri dönüşü orkestratör aynı dosyanın sonuna ekler.
 - `research/<konu>/` — araştırma notları.
@@ -43,6 +46,10 @@ cevabını bekleyen; `owner/reviews.md` = kullanıcının build notları; `owner
 
 Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (projenin CLAUDE.md'si yerlerini yazar); `work/resume.md`
 bunlara bağlantı verir.
+
+İş tahtası (isteğe bağlı görünüm): `python .claude/workflow/tools/pano_sayfa.py <çıktı.html> <repo>[=<Ad>[=<Etiket>]] ...`
+bir ya da birkaç reponun panosunu ve `owner/decisions.md` Bekleyen'ini tek HTML sayfada gösterir. Kaynak md'dir, sayfa elle düzenlenmez.
+İskeletin bölümlerine ek olarak `## Fikirler` ve `## Bekleyen` (kullanıcıyı bekleyen iş) tanınır; başka adlı bölüm sayfaya girmez.
 
 ## Hata kaydı
 Yakalanan her hata aynı turda `work/hatalar.md`'ye bir satır olur: tarih · ne oldu · ne yakaladı · önlem.

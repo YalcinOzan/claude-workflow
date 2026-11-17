@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # claude-workflow kurulumu / güncellemesi.
 # Kullanım: ./install.sh <proje-dizini> [--upgrade]
-#   .claude/workflow/  çekirdek ve şablonlar      } şablonun sahipliği: güncellemede yenilenir; projede elle
+#   .claude/workflow/  çekirdek, şablonlar, tools/ } şablonun sahipliği: güncellemede yenilenir; projede elle
 #   .claude/agents/    genel agent'lar            } değiştirilmiş dosya önce .bak-<zaman> olarak yedeklenir
 #   owner/, work/      iskelet (yalnız eksik dosyalar eklenir, mevcutlara dokunulmaz)
 #   CLAUDE.md          çekirdeği içe aktaran satır yoksa eklenir
@@ -54,6 +54,7 @@ place() {  # place <kaynak> <projeye göre hedef>
 for f in "$SRC"/core/*.md; do place "$f" ".claude/workflow/$(basename "$f")"; done
 for f in "$SRC"/templates/*.md; do place "$f" ".claude/workflow/templates/$(basename "$f")"; done
 for f in "$SRC"/agents/*.md; do place "$f" ".claude/agents/$(basename "$f")"; done
+for f in "$SRC"/tools/*; do [[ -f "$f" ]] || continue; place "$f" ".claude/workflow/tools/$(basename "$f")"; done
 
 # İskelet: yalnız eksik olanlar.
 while read -r rel; do

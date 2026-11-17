@@ -1,0 +1,220 @@
+<title>İş Tahtası</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap">
+<style>
+  /* Trello tarzı tahta: üstte "senden bekleyen" özeti ve projelerin taşı, altta dikkat sırasına dizili sütunlar (yatay kayar). */
+  :root {
+    --bg: #eef0eb; --surface: #ffffff; --lane: #e1e5dc; --fg: #1c1f19; --muted: #5d6458; --line: #cad0c2;
+    --r0: #f2dc00; --r0-ink: #1c1f19; --r1: #c2306f; --r1-ink: #ffffff; --r2: #2b6cb0; --r2-ink: #ffffff; --r3: #6b7a2a; --r3-ink: #ffffff;
+    --wait: #d9480f; --wait-soft: #fde6d9; --run: #2f7d4f; --run-soft: #dcefe2;
+    --font: "Lexend", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #141612; --surface: #1f231c; --lane: #191c16; --fg: #e5e8df; --muted: #9ba293; --line: #343a2e;
+    --r0: #e6d000; --r1: #e0559a; --r2: #5b9be0; --r3: #9db04a; --r3-ink: #141612; --wait: #ff8a4c; --wait-soft: #3a2418; --run: #6cc48f; --run-soft: #1c3124; color-scheme: dark } }
+  :root[data-theme="dark"] {
+    --bg: #141612; --surface: #1f231c; --lane: #191c16; --fg: #e5e8df; --muted: #9ba293; --line: #343a2e;
+    --r0: #e6d000; --r1: #e0559a; --r2: #5b9be0; --r3: #9db04a; --r3-ink: #141612; --wait: #ff8a4c; --wait-soft: #3a2418; --run: #6cc48f; --run-soft: #1c3124; color-scheme: dark }
+
+  body { background: var(--bg); color: var(--fg); font: 14px/1.45 var(--font); }
+  .wrap { padding-block: 20px 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+          display: grid; gap: 18px; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; text-wrap: balance; }
+  .stamp { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+
+  .summary { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stat { display: flex; align-items: baseline; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px;
+          background: var(--surface); color: var(--fg); font: inherit; cursor: pointer; }
+  .stat b { font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .stat.wait { border-color: var(--wait); background: var(--wait-soft); }
+  .stat.wait b { color: var(--wait); }
+  .stat:focus-visible, .chip:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  .stones { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 10px; }
+  .stone { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; min-width: 0; }
+  .stone h2 { margin: 0; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+  .stone .t { font-weight: 600; }
+  .stone p { margin: 6px 0 0; color: var(--muted); font-size: 0.86rem; overflow-wrap: anywhere; }
+  .stone summary { cursor: pointer; color: var(--muted); font-size: 0.8rem; }
+
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font: inherit; font-size: 0.82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+  .board { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; align-items: flex-start; scroll-snap-type: x proximity; }
+  .lane { flex: 0 0 min(290px, 84vw); background: var(--lane); border-radius: 10px; padding: 10px; display: grid; gap: 8px; scroll-snap-align: start; }
+  .lane.wait { box-shadow: inset 0 3px 0 var(--wait); }
+  .lane.run { box-shadow: inset 0 3px 0 var(--run); }
+  .lane h3 { margin: 0; padding: 2px 4px; font-size: 0.92rem; display: flex; justify-content: space-between; gap: 8px; }
+  .lane h3 span { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .lane .hint { margin: -4px 4px 2px; color: var(--muted); font-size: 0.76rem; }
+  .empty { color: var(--muted); font-size: 0.82rem; padding: 6px 4px; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 9px 10px; display: grid; gap: 6px; min-width: 0; }
+  .card .head { all: unset; display: grid; gap: 6px; cursor: pointer; }
+  .card .head:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; border-radius: 3px; }
+  .card a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .card .top { display: flex; gap: 6px; align-items: flex-start; }
+  .card .title { font-weight: 600; overflow-wrap: anywhere; }
+  .tag { flex: none; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; margin-top: 2px; }
+  .tag.r0 { background: var(--r0); color: var(--r0-ink); }
+  .tag.r1 { background: var(--r1); color: var(--r1-ink); }
+  .tag.r2 { background: var(--r2); color: var(--r2-ink); }
+  .tag.r3 { background: var(--r3); color: var(--r3-ink); }
+  .card ul { margin: 0; padding-left: 16px; color: var(--muted); font-size: 0.82rem; display: grid; gap: 4px; overflow-wrap: anywhere; }
+  .card .tasks { list-style: none; padding: 0; color: var(--fg); }
+  .card .tasks li { display: grid; grid-template-columns: auto 1fr; gap: 6px; align-items: start; }
+  .card .tasks li.done .tx { color: var(--muted); }
+  /* .card ul'un display: grid'i hidden özniteliğini eziyordu; ayrıntı hiç kapanmıyordu */
+  [hidden] { display: none !important; }
+  .card .tasks input { margin: 2px 0 0; }
+  .card .who { display: inline-block; margin-left: 4px; font-size: 0.72rem; padding: 0 5px; border-radius: 4px; background: var(--lane); color: var(--muted); }
+  .card .more { color: var(--muted); font-size: 0.75rem; }
+  code { font-size: 0.92em; background: var(--lane); padding: 0 3px; border-radius: 3px; }
+  .lane-more { font: inherit; font-size: 0.8rem; background: none; border: 0; color: var(--muted); cursor: pointer; text-decoration: underline; padding: 4px; }
+  footer { color: var(--muted); font-size: 0.78rem; }
+  @media (prefers-reduced-motion: no-preference) { .board { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 id="title">İş Tahtası</h1>
+    <span class="stamp" id="stamp"></span>
+  </header>
+  <div class="summary" id="summary"></div>
+  <div class="stones" id="stones"></div>
+  <div class="filters" role="group" aria-label="Proje">
+    <button class="chip" id="f-hepsi" data-f="hepsi" aria-pressed="true">Hepsi</button>
+  </div>
+  <div class="board" id="board"></div>
+  <footer>Kaynak: reponun <code>work/board.md</code> ve <code>owner/decisions.md</code> dosyaları. Bu sayfa yalnız görünüm; Claude panoyu güncelledikçe yeniden yayınlanır.</footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const LANES = [
+  { col: "bekleyen", name: "Senden bekleyen", hint: "Karar, gözden geçirme, senin işin", cls: "wait" },
+  { col: "suruyor", name: "Sürüyor", hint: "En fazla bir iş", cls: "run" },
+  { col: "acik", name: "Açık", hint: "Bitti ölçütü henüz tutmadı" },
+  { col: "yapilacak", name: "Yapılacak", hint: "Sıradaki işler" },
+  { col: "sonra", name: "Sonra", hint: "Senin onayın olmadan başlamaz" },
+  { col: "fikir", name: "Fikirler", hint: "Henüz iş değil" },
+  { col: "bitti", name: "Bitti", hint: "Kanıtlı, en yeniler" },
+];
+let filter = "hepsi";
+try { filter = localStorage.getItem("pano-filtre") || "hepsi"; } catch (e) {}
+// Eski sürümden kalan ya da artık olmayan repo filtresi boş tahta göstermesin diye "hepsi"ye döner.
+if (!DATA.repos.some(r => r.key === filter)) filter = "hepsi";
+const LABEL = Object.fromEntries(DATA.repos.map(r => [r.key, r.label]));
+const openLanes = new Set();
+
+function el(tag, cls, htmlText) { const e = document.createElement(tag); if (cls) e.className = cls; if (htmlText != null) e.innerHTML = htmlText; return e; }
+function visible(c) { return filter === "hepsi" || c.repo === filter; }
+
+// Kart bir kutu; başlık düğmesi ayrıntıyı açar (ayrıntıdaki bağlantılar tıklanabilsin diye düğmenin dışında).
+// "Senden bekleyen" kartları açık gelir: ne istendiği tıklamadan okunur.
+function card(c) {
+  const box = el("div", "card");
+  const b = el("button", "head");
+  b.type = "button";
+  const top = el("div", "top");
+  top.append(el("span", "tag " + c.repo, LABEL[c.repo]), el("span", "title", c.title));
+  b.append(top);
+  box.append(b);
+  if (c.tasks.length) {
+    const done = c.tasks.filter(t => t.done).length;
+    b.append(el("span", "more", "Alt görevler " + done + "/" + c.tasks.length));
+    const tl = el("ul", "tasks");
+    c.tasks.forEach(t => {
+      const li = el("li", t.done ? "done" : null);
+      const cb = el("input"); cb.type = "checkbox"; cb.checked = t.done; cb.disabled = true;
+      cb.setAttribute("aria-label", t.done ? "bitti" : "bekliyor");
+      li.append(cb, el("span", "tx", t.text + (t.who ? '<span class="who">' + t.who + "</span>" : "")));
+      tl.append(li);
+    });
+    box.append(tl);
+  }
+  if (c.details.length) {
+    const open = c.col === "bekleyen";
+    const more = el("span", "more", c.details.length + " ayrıntı");
+    const ul = el("ul");
+    c.details.forEach(d => ul.append(el("li", null, d)));
+    ul.hidden = !open; more.hidden = open;
+    b.append(more);
+    box.append(ul);
+    b.setAttribute("aria-expanded", String(open));
+    b.addEventListener("click", () => {
+      ul.hidden = !ul.hidden; more.hidden = !ul.hidden;
+      b.setAttribute("aria-expanded", String(!ul.hidden));
+    });
+  }
+  return box;
+}
+
+function render() {
+  document.getElementById("stamp").textContent = "Güncel: " + DATA.date;
+  document.getElementById("title").textContent = DATA.title;
+  const cards = DATA.cards.filter(visible);
+  const count = col => cards.filter(c => c.col === col).length;
+
+  const sum = document.getElementById("summary");
+  sum.replaceChildren();
+  [["bekleyen", "senden bekleyen", "wait"], ["suruyor", "sürüyor"], ["acik", "açık"], ["yapilacak", "yapılacak"], ["sonra", "sonra"], ["fikir", "fikir"]]
+    .forEach(([col, label, cls]) => {
+      const s = el("button", "stat" + (cls ? " " + cls : ""), "<b>" + count(col) + "</b>" + label);
+      s.type = "button";
+      s.addEventListener("click", () => document.getElementById("lane-" + col).scrollIntoView({ inline: "start", block: "nearest" }));
+      sum.append(s);
+    });
+
+  const stones = document.getElementById("stones");
+  stones.replaceChildren();
+  DATA.cards.filter(c => c.col === "tas" && visible(c)).forEach(c => {
+    const s = el("section", "stone");
+    s.append(el("h2", null, '<span class="tag ' + c.repo + '">' + LABEL[c.repo] + "</span>Şu anki taş"),
+             el("div", "t", c.title));
+    if (c.details.length) {
+      const det = el("details");
+      det.append(el("summary", null, "Ayrıntı"));
+      c.details.forEach(d => det.append(el("p", null, d)));
+      s.append(det);
+    }
+    stones.append(s);
+  });
+
+  const board = document.getElementById("board");
+  board.replaceChildren();
+  LANES.forEach(l => {
+    const lane = el("section", "lane" + (l.cls ? " " + l.cls : ""));
+    lane.id = "lane-" + l.col;
+    let list = cards.filter(c => c.col === l.col);
+    lane.append(el("h3", null, l.name + "<span>" + list.length + "</span>"), el("p", "hint", l.hint));
+    if (!list.length) lane.append(el("div", "empty", "Boş"));
+    const limited = l.col === "bitti" && !openLanes.has(l.col) && list.length > DATA.bitti_limit;
+    (limited ? list.slice(0, DATA.bitti_limit) : list).forEach(c => lane.append(card(c)));
+    if (limited) {
+      const m = el("button", "lane-more", (list.length - DATA.bitti_limit) + " tane daha göster");
+      m.type = "button";
+      m.addEventListener("click", () => { openLanes.add(l.col); render(); });
+      lane.append(m);
+    }
+    board.append(lane);
+  });
+
+  document.querySelectorAll(".chip").forEach(ch => ch.setAttribute("aria-pressed", String(ch.dataset.f === filter)));
+}
+
+// Tek repoda filtre gerekmez; birden çoksa her repo bir düğme.
+const chips = document.querySelector(".filters");
+if (DATA.repos.length < 2) chips.hidden = true;
+DATA.repos.forEach(r => { const b = el("button", "chip", null); b.textContent = r.name; b.dataset.f = r.key; b.setAttribute("aria-pressed", "false"); chips.append(b); });
+document.querySelectorAll(".chip").forEach(ch => ch.addEventListener("click", () => {
+  filter = ch.dataset.f;
+  try { localStorage.setItem("pano-filtre", filter); } catch (e) {}
+  render();
+}));
+render();
+</script>

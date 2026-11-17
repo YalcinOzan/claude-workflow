@@ -41,6 +41,7 @@ Kural 9'daki "iş durmaz" bu onayın yerine geçmez. Taş panonun başında yaz�
    bekleyen konuda karar gerektirmeyen işle (ölçüm, altyapı, onaysız "Claude önerisi" ile ilerleyen aşama) sürer.
 10. **Pano tek iş listesidir; "bitti" kanıtla.** `work/board.md`'de her iş başlamadan **bitti ölçütü** yazılır (kapı, ölçüm, test sorusu);
    Sürüyor'da en fazla bir iş. Bitti'ye yalnız kanıtla (commit, kapı çıktısı, ölçüm) geçilir; ölçütü tutmayan iş Açık'ta kalır, "bitti" denmez.
+   Panoya, `resume.md`'ye ve `handout.md`'ye yazılan her olgunun yanında kanıtı durur (komut, commit, ölçüm); kanıtı olmayan "tahmin, doğrulanmadı" diye işaretlenir.
    İş sırasında çıkan yeni şey Sonra'ya yazılır, kullanıcı onaylamadan ona geçilmez; sohbette gelen fikir aynı turda panoya satır olur.
    `reviewer` kodla birlikte satırın ölçütlerini tek tek denetler. Büyük işin bitti ölçütü taş başı sunumuna girer, kullanıcı onaylar.
    Panonun başında **Şu anki taş**: adı, içindeki satırlar, taşın bitti ölçütü; son satırı Bitti'ye geçince taş kuralı işler.

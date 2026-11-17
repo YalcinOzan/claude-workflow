@@ -9,6 +9,7 @@ işi, aynı kalitede yapabilecek en ucuz modele sabitlenmiş alt agent'lar yapar
 - `core/model-classes.md` — hangi iş hangi model ve çabada, yükseltme kuralları
 - `templates/` — iş paketi ve geri dönüş biçimi
 - `agents/` — reviewer, implementer, test-runner, scout, researcher, cleanup
+- `tools/` — iş tahtası (`pano_sayfa.py`: panoyu tek HTML sayfada gösterir); `.claude/workflow/tools/`'a kurulur, Python 3 ister
 - `skeleton/` — projeye eklenen `owner/` (kullanıcının) ve `work/` (orkestratörün) dosyaları
 
 ## Kurulum

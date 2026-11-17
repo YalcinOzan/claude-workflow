@@ -2,6 +2,19 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.3.3 — 2026-11-18
+Kaynak: 0.4.0'ın "yalnız Khan Borg'da kalan iyileştirmeler" maddesi (Khan Borg kuralları 2026-10-22 ve 2026-10-25, iş tahtası 2026-10-25).
+Ozan onayı: "üçü de olsun, Bekleyen uygun" (2026-11-18).
+- `CORE.md` kural 10: panoya, `resume.md`'ye ve `handout.md`'ye yazılan olgunun yanında kanıtı durur; kanıtsız olan "tahmin, doğrulanmadı".
+- `process.md`: şişen pano satırı `- Alt görevler:` altında `- [ ] metin · Yapan: <kim, model>` satırlarına bölünür; biten alt görevde Yapan
+  zorunlu, commit'te `Uygulayıcı:` satırı.
+- Yeni `tools/pano_sayfa.py` + `pano_sayfa.html` (iş tahtası): bir ya da birkaç reponun panosunu ve bekleyen kararlarını tek HTML sayfada
+  gösterir; repolar argümanla verilir, `--baslik` sayfa adı. `install.sh` `tools/`'u `.claude/workflow/tools/`'a kurar (manifestte).
+  Sınama: `python tests/pano_sayfa_test.py`. Panoda `## Bekleyen` ve `## Fikirler` bölümleri tanınır.
+- Geçiş: `install.sh --upgrade`. Projede kendi kopyası olan tahta varsa silinir, komut yeni yola çevrilir; tahtanın tanımadığı kullanıcıyı
+  bekleyen bölüm `## Bekleyen` diye yeniden adlandırılır (tanınmayan bölümün kartları sayfaya girmez). Proje CLAUDE.md'sindeki aynı
+  kurallar (olgu kanıtla, alt görev + Yapan) çift olur, silinir.
+
 ## 0.3.2 — 2026-11-18
 Kaynak: şablon herkese açık; kuran herkese "Ozan" diyordu. Ozan onayı: "kullanıcı kelimesi olsun, ad sorulmasın" (2026-11-17), uygulama
 biçimi ve bu kaydın bitti ölçütü onaylı (2026-11-18). 0.3.0'daki "şablon 'Ozan' der" kaydının yerini alır.
