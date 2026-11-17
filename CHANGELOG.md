@@ -2,6 +2,16 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.3.1 — 2026-11-17
+Kaynak: Khan Borg hata kaydı ve 2026-11-15 süreç incelemesi. Metni yazılı dört ayrı kural çiğnendi: betik hatasını yakalama koşulu
+kuralda vardı, kapıda yoktu; git dışında kalması gereken dosyalar depoya girdi; `resume.md` kısa tutma kuralına rağmen şişti; iş tahtası
+"her adımda yenile" yazılıyken yenilenmedi. Matt Pocock `retro` skill'inin kuralıyla aynı yöne varıyor (MIT). Ozan onayı.
+- İskelet: yeni `work/hatalar.md` (satır biçimi + `process.md`'ye işaret; kural metni yalnız `process.md`'de).
+- `process.md`: `hatalar.md` dosya listesinde; yeni "Hata kaydı" bölümü: sabit desenli ihlal ilk görüldüğünde kapıya ya da kancaya
+  bağlanır, kural metni yargı isteyen hataya kalır; kapıya eklenen denetim bilerek bozulmuş girdide kırmızı verdiği görülerek gelir.
+- Geçiş: `install.sh --upgrade` eksikse `work/hatalar.md`'yi ekler, var olan hata kaydına dokunmaz. Projede zaten bir hata kaydı varsa
+  başlığındaki önlem kuralı elle `process.md` "Hata kaydı"na işaretle değiştirilir (ör. "ikinci kez görülen önlem kurala taşınır" satırı).
+
 ## 0.3.0 — 2026-10-21
 Kaynak: Khan Borg işletim şeması gözden geçirmesi (taş arası sunum panodan tetiklenmiyordu; iki repoya dokunan iş iki panoda çift satır
 olup birinde kanıtsız kaldı) ve KhanBorg'u şablona eşitleme. Ozan onayı.

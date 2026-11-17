@@ -38,10 +38,19 @@ cevabını bekleyen; `owner/reviews.md` = Ozan'ın build notları; `owner/tasks.
 - `research/<konu>/` — araştırma notları.
 - `inbox/` — başka projeden devredilen iş; gelen her öğe bir araştırma + karar turu başlatır.
 - `cleanup.md` — kilometre taşı sonu kontrol listesi.
+- `hatalar.md` — hata kaydı, her hata bir satır (aşağıda "Hata kaydı"). Kalıcı araç tuzağı `handout.md`'dedir.
 - `archive/` — biten kilometre taşlarının özetleri (paketler ve araştırma buraya özetlenip silinir).
 
 Tasarım dokümanı ve karar kaydı projenin kendi yerindedir (projenin CLAUDE.md'si yerlerini yazar); `work/resume.md`
 bunlara bağlantı verir.
+
+## Hata kaydı
+Yakalanan her hata aynı turda `work/hatalar.md`'ye bir satır olur: tarih · ne oldu · ne yakaladı · önlem.
+**Sabit desenli ihlal kural metnine değil denetime bağlanır.** Bir dosyanın yanlış yere girmesi, yasak komut ya da API, unutulan yer
+tutucu gibi makinenin görebileceği ihlal ilk görüldüğünde projenin kapısına ya da bir kancaya denetim olarak eklenir; satır denetimin
+yerini yazar. Kural metni hatırlanmayı bekler, kapı beklemez. Kural metni yalnız yargı isteyen hataya kalır: aynı tür ikinci kez
+yazılıyorsa önlem projenin CLAUDE.md'sine ya da teste taşınır. Kapıya eklenen denetim kapının kendi sınamasıyla gelir (bilerek bozulmuş
+girdide kırmızı verdiği görülür).
 
 ## Paralel çalışma
 - En fazla 4 ekip üyesi aynı anda; her biri kendi worktree'sinde (`implementer` tanımında sabit; başka agent
