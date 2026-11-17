@@ -2,6 +2,15 @@
 
 Yalnız eklenir; yeni kayıt en üstte.
 
+## 0.3.4 — 2026-11-18
+Kaynak: 0.4.0'ın aşama sınırı / bağlam yönetimi maddesi. Bir taşın birkaç satırını tek oturumda süren oturum bağlam sınırına varıp
+sıkıştırıldı; taş başında yeni oturum kuralı yalnız projelerde yereldi. Matt Pocock'un aşama sınırı karar ağacıyla aynı yönde (devam /
+yeni oturum / alt ajan). Ozan onayı: "taş + biten pano satırı" seçeneği (2026-11-18).
+- `CORE.md` kural 1: taş bittiğinde ya da pano satırı Bitti'ye geçtiğinde sıradaki iş push'tan sonra yeni oturumda `resume.md`'den başlar;
+  aynı bağlamın üstüne kurulan satırda devam edilir. Oturumdan uzun sürecek onay (ör. taş boyunca commit/push izni) aynı turda panonun
+  "Şu anki taş" bölümüne kapsamı ve bitişiyle yazılır.
+- Geçiş: `install.sh --upgrade`. Proje CLAUDE.md'sinde "her taş yeni oturumda başlar" gibi bir kural varsa çift olur, silinir.
+
 ## 0.3.3 — 2026-11-18
 Kaynak: 0.4.0'ın "yalnız Khan Borg'da kalan iyileştirmeler" maddesi (Khan Borg kuralları 2026-10-22 ve 2026-10-25, iş tahtası 2026-10-25).
 Ozan onayı: "üçü de olsun, Bekleyen uygun" (2026-11-18).

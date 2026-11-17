@@ -25,6 +25,9 @@ Kural 9'daki "iş durmaz" bu onayın yerine geçmez. Taş panonun başında yaz�
    `work/archive/`'e); cevaplanmış kararlar ve yeni
    görevler işlenir, "devam" denince `resume.md`'den sürülür. Her iş adımı sonunda `work/resume.md` ve
    `work/board.md` güncellenir, **commit'lenir ve çalışma dalına push'lanır** (yeni oturum yalnız push'lananı görür).
+   **Aşama sınırında yeni oturum:** taş bittiğinde ya da bir pano satırı Bitti'ye geçtiğinde sıradaki iş push'tan sonra yeni oturumda
+   `resume.md`'den başlar; sıradaki satır aynı bağlamın üstüne kuruluyorsa (aynı dosyalar, aynı açık soru) devam edilir. Sohbette verilen,
+   oturumdan uzun sürecek onay (ör. taş boyunca commit/push izni) aynı turda panonun **Şu anki taş** bölümüne kapsamı ve bitişiyle yazılır.
 2. **Döngü:** konu » araştırma + sorular » karar turu (kullanıcı) » tasarım güncellemesi » önce test, sonra kod »
    tasarıma karşı gözden geçirme » kapı (testler) + birleştirme + build » kullanıcı gözden geçirir.
 3. **Kararlar kullanıcınındır.** Seçenek ve öneri sunulur; onaysız uygulanan karar "Claude önerisi" diye işaretlenir.
